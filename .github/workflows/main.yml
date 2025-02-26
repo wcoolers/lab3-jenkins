@@ -1,0 +1,27 @@
+name: Lab3 workflow to print the name of the user that pushed into the repo plus the commit message
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  job1:
+    name: Show Commit Author
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Display the Commit Author
+        run: echo "Pushed by - ${{ github.actor }}"
+
+  job2:
+    name: Show Commit Message
+    runs-on: ubuntu-latest
+    needs: job1  # Ensures job2 runs only after job1 completes
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display the Commit Message
+        run: echo "Commit message - $(git log -1 --pretty=%B)"
