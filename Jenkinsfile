@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Task 1: Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git'
+                git branch: 'main', url: 'https://github.com/wcoolers/lab3-jenkins.git'
             }
         }
 
